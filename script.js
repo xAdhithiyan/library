@@ -27,17 +27,54 @@ function addBook (){
 
 //function to display books from the main array myLibrary
 function displayBook(){
-    let box = document.querySelector(`box-${count}`)
     for(let i = 0; i <  myLibrary.length; i++){
-        box.appendChild(document.createElement("div").textContent = `${myLibrary[i].title}`)
 
+        //to add a new box on cards grid
+        if(count > 3){
+            let cards = document.querySelector(".cards");
+            let nextBox = document.createElement("div")
+            nextBox.classList.add(`box-${count}`)
+            cards.appendChild(nextBox)
+        }
+
+        let box = document.querySelector(`.box-${count}`);
+        box.classList.add("box");
+        //  myLibrary[i] is an object
+        for(let j in myLibrary[i]){
+            if(myLibrary[i][j] != undefined){
+                let div = document.createElement("div");
+                div.textContent = `${myLibrary[i][j]}`;
+                box.appendChild(div);
+            }
+        }
+        // //adding the buttons
+        for(let i = 0; i < 3; i++){
+            let btn = document.createElement("button");
+            switch(i){
+                case 0:
+                    btn.textContent = "Read";
+                    box.append(btn);
+                    break;
+                case 1:
+                    btn.textContent = "Edit";
+                    box.append(btn);
+                    break;
+                case 2:
+                    btn.textContent = "Remove";
+                    let div = document.createElement("div");
+                    div.appendChild(btn);
+                    div.classList.add("removeBtn");
+                    box.append(div);
+                    break;
+            }
+        }
+        count++
     }
 }
 
 let obj1 = new Books("a" , "b" , "c")
 let obj2 = new Books ("d" , "e" , "f")
 myLibrary.push(obj1)
-myLibrary.push(obj2)
-console.log(displayBook()) 
+displayBook() 
 
 
