@@ -3,6 +3,9 @@
 //main array of all the books
 const myLibrary = [];
 
+//to select the box one by one
+let count = 2;
+
 //constructor for making books object 
 function Books(title,author,pages,read){
     this.title = title;
@@ -24,9 +27,17 @@ function addBook (){
 
 //function to display books from the main array myLibrary
 function displayBook(){
-    for(obj of myLibrary){
-        console.log(obj.title)
+    let box = document.querySelector(`box-${count}`)
+    for(let i = 0; i <  myLibrary.length; i++){
+        box.appendChild(document.createElement("div").textContent = `${myLibrary[i].title}`)
+
     }
 }
+
+let obj1 = new Books("a" , "b" , "c")
+let obj2 = new Books ("d" , "e" , "f")
+myLibrary.push(obj1)
+myLibrary.push(obj2)
+console.log(displayBook()) 
 
 

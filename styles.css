@@ -2,6 +2,7 @@
 :root{
     font-family: 'Roboto', sans-serif;
     background-color: #f6ca83;  
+    overflow: hidden;
 }
 
 
@@ -32,6 +33,8 @@ hr{
     font-size:1.5rem;
     width: 32%;
     margin:0 auto;
+    margin-top:20px;
+    margin-bottom:20px;
     height: 100px;
 
     display:flex;
@@ -45,4 +48,51 @@ hr{
     flex-direction: column;
     align-items: center;
     text-align: center;
+}
+.cards{
+    height: max(300px ,calc(100vh - 290px));
+    width: 60%;
+    margin:0 auto;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 320px);
+    grid-auto-rows: 300px;
+    gap: 20px;
+    justify-content: center;
+
+    overflow: auto;
+
+}
+
+.cards > .box{
+    background-color: white;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 10px;
+    
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
+    grid-template-rows: 85px;
+    gap: 10px;  
+    align-items: center;
+    justify-items: center;
+    
+    border: 2px solid black;
+    border-radius: 25px;
+}
+.cards > .box > div:nth-child(1){
+    font-size: 2rem;
+    grid-column: 1 / 3;
+}
+.cards > .box > div:nth-child(n+2){
+    font-size: 1.5rem;
+    grid-column: 1 / 3;
+}
+button{
+    height: 100%;
+    width: 80%;
+}
+.removeBtn{
+    height: 100%;
+    width:200px;
 }
