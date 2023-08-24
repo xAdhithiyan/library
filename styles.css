@@ -2,7 +2,8 @@
 :root{
     font-family: 'Roboto', sans-serif;
     background-color: #f6ca83;  
-    overflow: hidden;
+    /* overflow: hidden; */
+    --bg-color: #d1d5db;
 }
 
 
@@ -29,6 +30,7 @@ hr{
     box-sizing: border-box;
     padding: 25px;
     border: 2px solid black;
+    background-color: white;
     border-radius: 25px;
     font-size:1.5rem;
     width: 32%;
@@ -94,5 +96,72 @@ button{
 }
 .removeBtn{
     height: 100%;
-    width:200px;
+    width:250px;
+}
+.readBtnOutside{
+    height: 90%;
+    width: 180px;
+}
+
+.addBookBtn{
+    position: fixed;
+    bottom: 10px;
+    right:10px;
+    height:80px;
+    border: 2px solid black;
+    background-color: var(--bg-color);
+}
+
+.addBookBtn:hover{
+    transform: rotate(180deg);
+    transition:400ms;
+    height: 90px;
+}
+
+
+/* Styling dialog tag(modal) */
+.modal::backdrop{
+    background: rgb(0 0 0 / 0.4);
+}
+.modal{
+    width: 500px;
+    border: 3px solid black;
+    border-radius: 25px;
+    font-size: 1.5rem;
+}
+form > div{
+    margin:5px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
+form > div > div{
+    margin:10px;
+}
+input{
+    width: 50%;
+    outline:none;
+    appearance: none;
+    border-radius: 10px;
+    padding:5px;
+    border:2px solid black;
+}
+input:hover,
+input:focus{
+    border:2px solid black;
+}
+.readBtn{
+    margin:20px;
+    width: 40%;
+}
+.btns{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.btns > button, 
+.readBtn{
+    width: 40%;
+    height: 50px;
 }

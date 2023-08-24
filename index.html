@@ -35,12 +35,36 @@
                 <div>American Prometheus</div>
                 <div>- Kai Bird</div>
                 <div>784 Pages</div>
-                <button>Read</button>
-                <button>Edit</button>
+                <div class="readBtnOutside"><button>Read</button></div>
                 <div class="removeBtn"><button>Remove</button></div>
             </div>
             <div class="box-2"></div>
             <div class="box-3"></div>
     </section>
+    <img src="images/plus.svg" alt="plus image" class="addBookBtn">
+
+    <!-- dialog(modal) -->
+    <dialog class="modal">
+        <form action="#" method="">
+            <div>
+                <div><label for="book-name">Book Name</label></div>
+                <input type="text" id="book-name" name="book-name" required>
+            </div>
+            <div>
+                <div><label for="author">Author</label></div>
+                <input type="text" id="author" name="author" required>
+            </div>
+            <div>
+                <div><label for="pages">Pages</label></div>
+                <input type="number" id="pages" name="pages" required>
+            </div>
+            <div><button type="button" class="readBtn">Read</button></div>
+            <div class="btns">
+                <button type="button" class="closeBookBtn">Close</button>
+                <button type="submit" class="submitBookBtn">Submit</button>
+            </div>
+        </form>
+    </dialog>
+
 </body>
 </html>
