@@ -19,8 +19,9 @@ function Books(title,author,pages,read){
 function addBook (){
     const bookDetails = document.querySelectorAll("input");
     const obj = new Books(bookDetails[0].value , "- " + bookDetails[1].value , bookDetails[2].value + " Pages" , document.querySelector(".readBtn").textContent);
-    myLibrary.push(obj)
-    displayBook()
+    myLibrary.push(obj);
+    displayBook();
+    updateMainMenu();
     bookDetails[0].value = bookDetails[1].value = bookDetails[2].value = "";
     console.log(myLibrary)
 }
@@ -96,34 +97,53 @@ function removeButton(e, btn){
         boxNamec[0].classList.remove(`${boxNumberc}`)
         
         let newI = +i + 1;
-        let newBtn = document.getElementsByClassName(`${newI}`)
-        newBtn[0].classList.add(`${i}`)
-        newBtn[0].classList.remove(`${newI}`)
+        let newBtn = document.getElementsByClassName(`${newI}`);
+        newBtn[0].classList.add(`${i}`);
+        newBtn[0].classList.remove(`${newI}`);
 
-    }   
+    }
+    updateMainMenu();
     
     console.log(myLibrary)    
 }
 function readButton(e,btn,div){
     //updating main array 
-    let arrayPosition = div.nextElementSibling.firstChild.classList.value - 1 
+    let arrayPosition = div.nextElementSibling.firstChild.classList.value - 1;
 
     //updating color
     if(btn.textContent == "Read"){
-        btn.textContent = "Not Read"
-        btn.classList.add("invalidColor")
-        btn.classList.remove("validColor")
-        myLibrary[arrayPosition]["read"] = "Not Read"
+        btn.textContent = "Not Read";
+        btn.classList.add("invalidColor");
+        btn.classList.remove("validColor");
+        myLibrary[arrayPosition]["read"] = "Not Read";
 
     }else{
-        btn.textContent = "Read"
-        btn.classList.add("validColor")
-        btn.classList.remove("invalidColor")
-        myLibrary[arrayPosition]["read"] = "Read"
+        btn.textContent = "Read";
+        btn.classList.add("validColor");
+        btn.classList.remove("invalidColor");
+        myLibrary[arrayPosition]["read"] = "Read";
     }
-
+    updateMainMenu();
     console.log(myLibrary)
 }
+
+function updateMainMenu(){
+    let readNumber = document.querySelector(".readNumber");
+    let notReadNumber = document.querySelector(".notReadNumber");
+    let totalBooks = document.querySelector(".totalBooks");
+    readNumber.textContent = notReadNumber.textContent = 0;
+
+    totalBooks.textContent = myLibrary.length;
+    for(let i = 0; i < myLibrary.length; i++){
+        if (myLibrary[i].read == "Read"){
+            readNumber.textContent = +readNumber.textContent + 1;
+        }else{
+            notReadNumber.textContent = +notReadNumber.textContent + 1;
+        }
+    }
+}
+
+
 function popUp(){
     //add eventlinsteners for dialog element(pop up screen)
     const addBookBtn = document.querySelector(".addBookBtn");
