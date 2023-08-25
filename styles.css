@@ -1,16 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap'); 
 :root{
     font-family: 'Roboto', sans-serif;
-    background-color: #f6ca83;  
-    /* overflow: hidden; */
-    --bg-color: #d1d5db;
+    --bg-color: #DB5461;
+    --secondary-bg-color: #C6D8D3;
     --valid-color: #4ade80; /* tailwind 400 green */
-    --valid-color-lighter: #86efac;
-    --invalid-color: #f87171;
-    --invalid-color-lighter: #fca5a5;    
+    --invalid-color: #f87171;   
+    background-color: var(--bg-color);
 }
-
-
 header{
     font-size: 2.8rem;
     width: 50%;
@@ -28,13 +24,16 @@ img{
 }
 hr{
     width: 55%;
+    color: black;
+    border-color: black;
+    border-color: black; 
 }
 
 .subheading{
     box-sizing: border-box;
     padding: 25px;
     border: 2px solid black;
-    background-color: white;
+    background-color: var(--secondary-bg-color);
     border-radius: 25px;
     font-size:1.5rem;
     width: 32%;
@@ -54,6 +53,12 @@ hr{
     flex-direction: column;
     align-items: center;
     text-align: center;
+}
+.subheading > div:first-child{
+    color:var(--valid-color)
+}
+.subheading > div:nth-child(2){
+    color:var(--invalid-color)
 }
 .cards{
     height: max(300px ,calc(100vh - 290px));
@@ -83,7 +88,7 @@ hr{
     justify-items: center;
     
     border: 2px solid black;
-    background-color: white;
+    background-color: var(--secondary-bg-color);
     border-radius: 25px;
 }
 .cards > .box > div:nth-child(1){
@@ -113,7 +118,7 @@ button{
     right:10px;
     height:80px;
     border: 2px solid black;
-    background-color: var(--bg-color);
+    background-color: var(--secondary-bg-color);
 }
 
 .addBookBtn:hover{
@@ -132,6 +137,7 @@ button{
     border: 3px solid black;
     border-radius: 25px;
     font-size: 1.5rem;
+    background-color: var(--secondary-bg-color)
 }
 form > div{
     margin:5px;

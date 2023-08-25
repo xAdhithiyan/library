@@ -14,7 +14,6 @@ function Books(title,author,pages,read){
     this.read = read;
 } 
 
-
 //function to enter books in the main array myLibrary
 function addBook (){
     const bookDetails = document.querySelectorAll("input");
@@ -23,7 +22,6 @@ function addBook (){
     displayBook();
     updateMainMenu();
     bookDetails[0].value = bookDetails[1].value = bookDetails[2].value = "";
-    console.log(myLibrary)
 }
 
 
@@ -102,9 +100,7 @@ function removeButton(e, btn){
         newBtn[0].classList.remove(`${newI}`);
 
     }
-    updateMainMenu();
-    
-    console.log(myLibrary)    
+    updateMainMenu();  
 }
 function readButton(e,btn,div){
     //updating main array 
@@ -124,7 +120,6 @@ function readButton(e,btn,div){
         myLibrary[arrayPosition]["read"] = "Read";
     }
     updateMainMenu();
-    console.log(myLibrary)
 }
 
 function updateMainMenu(){
