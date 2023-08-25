@@ -29,7 +29,7 @@ function addBook (){
 //function to display books from the main array myLibrary
 function displayBook(){
     //to add a new box on cards grid
-    if(count > 3){
+    if(count > 0){
         let cards = document.querySelector(".cards");
         let nextBox = document.createElement("div");
         nextBox.classList.add(`box-${count}`);
@@ -59,6 +59,10 @@ function displayBook(){
                 break;
             case 1:
                 btn.textContent = "Remove";
+                btn.classList.add(`${count}`)
+                btn.addEventListener("click", (e) => {
+                    removeButton(e, btn, count)
+                })
                 let div1 = document.createElement("div");
                 div1.appendChild(btn);
                 div1.classList.add("removeBtn");
@@ -67,6 +71,36 @@ function displayBook(){
         }
     }
     count++;
+}
+
+//removes the card when button is clicked
+function removeButton(e, btn){
+    let boxNumber = "box-" + btn.classList.value;
+    let boxName = document.getElementsByClassName(`${boxNumber}`);
+    myLibrary.splice(btn.classList.value - 1, 1 );
+    while (boxName[0].firstChild) {
+        boxName[0].removeChild(boxName[0].lastChild);
+    }
+    count --;
+    boxName[0].remove();
+    let val =  btn.classList.value;
+    // decerement the next boxes values by 1 after deleting a box
+    for(let i = val; i < count; i++){
+        console.log(i , count)
+        let boxNumberc = "box-" + (+i + 1);
+        let newBoxNumberc =  "box-" + i;
+        let boxNamec = document.getElementsByClassName(`${boxNumberc}`);
+        boxNamec[0].classList.add(`${newBoxNumberc}`)
+        boxNamec[0].classList.remove(`${boxNumberc}`)
+        
+        let newI = +i + 1;
+        let newBtn = document.getElementsByClassName(`${newI}`)
+        newBtn[0].classList.add(`${i}`)
+        newBtn[0].classList.remove(`${newI}`)
+
+    }   
+    
+    console.log(myLibrary)    
 }
 
 function popUp(){
@@ -106,7 +140,6 @@ function popUp(){
         }
     })
 }
-
 popUp();
 
 //first card defualt values
