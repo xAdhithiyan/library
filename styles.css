@@ -114,7 +114,7 @@ button{
 
 .addBookBtn{
     position: fixed;
-    bottom: 10px;
+    bottom: 40px;
     right:10px;
     height:80px;
     border: 2px solid black;
@@ -186,4 +186,28 @@ button{
 .invalidColor{
     background-color:var(--invalid-color);
     opacity: 1;
+}
+footer{
+    position: fixed;
+    bottom:0px;
+    left:0px;
+    width: 100%;
+    color:white;
+    background-color: black;
+    padding:4px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+footer img{
+    background-color: white;
+    height: 25px;
+}
+
+footer img:hover{
+    transform: rotate(360deg);
+    transition: all 800ms;
 }
