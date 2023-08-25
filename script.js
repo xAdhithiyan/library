@@ -51,10 +51,13 @@ function displayBook(){
         switch(i){
             case 0:
                 btn.textContent = myLibrary[myLibrary.length - 1]["read"];
-                btn.textContent == "Read" ? btn.classList.add("validColor") : btn.classList.add("invalidColor") 
+                btn.textContent == "Read" ? btn.classList.add("validColor") : btn.classList.add("invalidColor")
                 let div = document.createElement("div");
                 div.appendChild(btn);
                 div.classList.add("readBtnOutside");
+                btn.addEventListener("click", (e) => {
+                    readButton(e, btn, div)
+                })
                 box.append(div);
                 break;
             case 1:
@@ -86,7 +89,6 @@ function removeButton(e, btn){
     let val =  btn.classList.value;
     // decerement the next boxes values by 1 after deleting a box
     for(let i = val; i < count; i++){
-        console.log(i , count)
         let boxNumberc = "box-" + (+i + 1);
         let newBoxNumberc =  "box-" + i;
         let boxNamec = document.getElementsByClassName(`${boxNumberc}`);
@@ -102,7 +104,26 @@ function removeButton(e, btn){
     
     console.log(myLibrary)    
 }
+function readButton(e,btn,div){
+    //updating main array 
+    let arrayPosition = div.nextElementSibling.firstChild.classList.value - 1 
 
+    //updating color
+    if(btn.textContent == "Read"){
+        btn.textContent = "Not Read"
+        btn.classList.add("invalidColor")
+        btn.classList.remove("validColor")
+        myLibrary[arrayPosition]["read"] = "Not Read"
+
+    }else{
+        btn.textContent = "Read"
+        btn.classList.add("validColor")
+        btn.classList.remove("invalidColor")
+        myLibrary[arrayPosition]["read"] = "Read"
+    }
+
+    console.log(myLibrary)
+}
 function popUp(){
     //add eventlinsteners for dialog element(pop up screen)
     const addBookBtn = document.querySelector(".addBookBtn");
@@ -126,7 +147,6 @@ function popUp(){
 
     //to set read status and color of the buttons
     let readBtn = document.querySelector(".readBtn");
-
     readBtn.addEventListener("click", () =>{
         if(readBtn.textContent == "Read"){
             readBtn.textContent = "Not Read"
@@ -145,3 +165,4 @@ popUp();
 //first card defualt values
 myLibrary.push(new Books("American Prometheus", "- Kai Bird", "784 Pages", "Read"))
 displayBook();
+
