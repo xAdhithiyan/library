@@ -4,6 +4,10 @@
     background-color: #f6ca83;  
     /* overflow: hidden; */
     --bg-color: #d1d5db;
+    --valid-color: #4ade80; /* tailwind 400 green */
+    --valid-color-lighter: #86efac;
+    --invalid-color: #f87171;
+    --invalid-color-lighter: #fca5a5;    
 }
 
 
@@ -67,7 +71,6 @@ hr{
 }
 
 .cards > .box{
-    background-color: white;
     text-align: center;
     box-sizing: border-box;
     padding: 10px;
@@ -80,6 +83,7 @@ hr{
     justify-items: center;
     
     border: 2px solid black;
+    background-color: white;
     border-radius: 25px;
 }
 .cards > .box > div:nth-child(1){
@@ -99,8 +103,8 @@ button{
     width:250px;
 }
 .readBtnOutside{
-    height: 90%;
-    width: 180px;
+    height: 100%;
+    width: 150px;
 }
 
 .addBookBtn{
@@ -164,4 +168,16 @@ input:focus{
 .readBtn{
     width: 40%;
     height: 50px;
+}
+button{
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+.validColor{
+    background-color: var(--valid-color);
+}
+.invalidColor{
+    background-color:var(--invalid-color);
+    opacity: 1;
 }
